@@ -74,28 +74,10 @@ else
 	yellow="\e[1;33m";
 fi
 
-# Highlight the user name when logged in as root.
-# if [[ "${USER}" == "root" ]]; then
-# 	user_style="${red}";
-# else
-# 	user_style="${yellow}";
-# fi
-
-# PS1="\[${bold}${violet}\]$conda_env"
-# PS1+="\[${userStyle}\]\u@\h "
-# PS1+="\[${blue}\]\W "
-# PS1+="\[${cyan}\]\@"
-# PS1+="\[${reset}\]\n$ "
-
-# conda_env="\$([ ! -z \"\$CONDA_DEFAULT_ENV\" ] && echo \"(\${CONDA_DEFAULT_ENV}) \")"
-function conda_env() {
-	[ ! -z "$CONDA_DEFAULT_ENV" ] && echo "($CONDA_DEFAULT_ENV) "
-}
-
 PS1="\n"
-PS1+="\[\033[01;35m\]\$(conda_env)\[\033[00m\]"
-PS1+="\[\033[01;32m\]\$(prompt_git)\[\033[00m\]"
-PS1+="\[\033[01;33m\]\u@\h\[\033[00m\]: "
-PS1+="\[\033[00;34m\]\W\[\033[00m\] "
-PS1+="\[\033[01;36m\]\@\[\033[00m\] "
-PS1+="\n\$ "
+PS1+="$violet\$([ -n \"\$CONDA_DEFAULT_ENV\" ] && echo \"(\$CONDA_DEFAULT_ENV) \")"
+PS1+="$green\$(prompt_git)"
+PS1+="$white\u@\h: "
+PS1+="$blue\W "
+PS1+="$orange\@ "
+PS1+="$reset\n\$ "

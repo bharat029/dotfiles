@@ -8,7 +8,7 @@ imap <C-s> <esc>:w<CR>i
 " Normal Mode
 nmap <C-w> :q<CR>
 nmap <C-s> :w<CR>
-nmap zz :!q<CR>
+nmap ZZ :!q<CR>
 
 " code to allow use of <C-s> binding
 silent !stty -ixon
