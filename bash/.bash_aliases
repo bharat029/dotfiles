@@ -6,9 +6,23 @@ alias cdc='cd /mnt/c'
 alias cdd='cd /mnt/d'
 alias cde='cd /mnt/e'
 alias cdf='cd /mnt/f'
+alias cddw='cd /mnt/c/Users/vbhar/Downloads/'
 
 # git aliases
 alias ggraph='git log --graph --oneline --all'
+alias gi='git init'
+alias gs='git status'
+alias ga='git add -A'
+alias gac='git add -A; git commit'
+alias gca='git commit --ammend'
+alias gck='git checkout'
+alias gcl='git clean -f'
+alias gph='git push'
+alias gpho='git push origin main'
+alias gpl='git pull'
+alias gl='git log'
+alias grs='git reset'
+alias grh='git reset --hard'
 
 # open bash dotfiles
 alias bal='code ~/.bash_aliases'
@@ -25,15 +39,17 @@ alias cls=clear
 alias grep='grep --color'
 
 # cron jobs
+alias cronst='service cron status'
 alias cronl='crontab -l'
 alias crons='sudo cron'
 alias crone='crontab -e'
 
 # backups
-alias bkbash='rsync -av ~/.{bashrc,bash_aliases,bash_prompt} ~/backups/bash/'
+alias bkbash='rsync -av ~/.bash{rc,_aliases,_prompt,_helper} ~/backups/bash/'
 alias bkvim='rsync -av ~/.vimrc ~/backups/vim/'
 alias bkconda='rsync -av ~/.condarc ~/backups/conda/'
 alias bkinp='rsync -av ~/.inputrc ~/backups/input/'
+alias bkup='. ~/scripts/backup.sh >> ~/logs/backup.log'
 
 # zip files
 alias tzip='tar -czvf'
@@ -50,4 +66,4 @@ alias ci='conda install'
 alias cup='conda update'
 
 # c++
-alias g='g++ -std=c++17'
+alias g++='g++ -std=c++17'

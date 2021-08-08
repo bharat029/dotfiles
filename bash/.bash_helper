@@ -1,0 +1,7 @@
+falias() {
+  alias | sed 's/alias //g' | grep $1 | while read line; do
+    a=$(echo "$line" | cut -d "=" -f 1)
+    v=$(echo "$line" | cut -d "=" -f 2-)
+    printf "%-6s -> %s\n" "$a" "$v"
+  done | nl
+}
