@@ -1,3 +1,11 @@
+#!/bin/bash
+
+# Make directory and move inside
+mkd() {
+	mkdir -p "$@" && cd "$_";
+}
+
+# Find aliases
 falias() {
   alias | sed 's/alias //g' | grep $1 | while read line; do
     a=$(echo "$line" | cut -d "=" -f 1)
