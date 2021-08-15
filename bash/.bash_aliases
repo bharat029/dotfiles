@@ -11,21 +11,8 @@ alias cde='cd /mnt/e'
 alias cdf='cd /mnt/f'
 alias cddw='cd /mnt/c/Users/vbhar/Downloads/'
 
-# git aliases
-alias ggraph='git log --graph --oneline --all'
-alias gi='git init'
-alias gs='git status'
-alias ga='git add -A'
-alias gac='git add -A; git commit'
-alias gca='git add -A; git commit --amend'
-alias gck='git checkout'
-alias gcl='git clean -f'
-alias gph='git push'
-alias gpho='git push origin main'
-alias gpl='git pull'
-alias gl='git log'
-alias grs='git reset'
-alias grh='git reset --hard'
+# git
+alias g='git'
 
 # open bash dotfiles
 alias bal='code ~/.bash_aliases'
@@ -49,6 +36,7 @@ alias bkbash='rsync -av ~/.bash{rc,_aliases,_prompt,_helper,_exports} ~/backups/
 alias bkvim='rsync -av ~/.vimrc ~/backups/vim/'
 alias bkconda='rsync -av ~/.condarc ~/backups/conda/'
 alias bkinp='rsync -av ~/.inputrc ~/backups/input/'
+alias bkgit='rsync -av ~/.gitconfig ~/backups/git/'
 alias bkup='. ~/scripts/backup.sh >> ~/logs/backup.log'
 
 # zip files

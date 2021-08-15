@@ -1,0 +1,28 @@
+[user]
+	name = Bharathan Mudaliar
+	email = vbharathan.2013@gmail.com
+[core]
+	editor = code -w
+[credential]
+	helper = store
+[alias]
+	a = add -A
+	aliases = config --get-regexp alias
+	am = !git add -A && git commit --amend
+	b = branch
+	ba = branch --all
+	c = clone
+	ca = !git add -A && git commit
+	cl = clean -f
+	ck = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	gr = log --graph --oneline --all
+	i = init
+	l = log
+	ph = push
+	pho = push origin main
+	pl = pull
+	rs = reset
+	rh = reset --hard
+	s = status
+[init]
+  defaultBranch = main
