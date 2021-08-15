@@ -2,7 +2,7 @@
 
 # Make directory and move inside
 mkd() {
-	mkdir -p "$@" && cd "$_";
+  mkdir -p "$@" && cd "$_"
 }
 
 # Find aliases
