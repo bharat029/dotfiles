@@ -7,9 +7,38 @@ mkd() {
 
 # Find aliases
 falias() {
-  alias | sed 's/alias //g' | grep $1 | while read line; do
-    a=$(echo "$line" | cut -d "=" -f 1)
-    v=$(echo "$line" | cut -d "=" -f 2-)
-    printf "%-6s -> %s\n" "$a" "$v"
-  done | nl
+  local i=-1
+  
+  if (( $# > 0 )); then
+    local aliases="$(alias | grep $1)"
+  else
+    local aliases="$(alias)"
+  fi
+
+  aliases="$(echo \"$aliases\" | sed 's/alias /\n/g')"
+
+  echo -e "$aliases" | while read line; do
+    local a=$(echo "$line" | cut -d "=" -f 1)
+    local v=$(echo "$line" | cut -d "=" -f 2-)
+    (( ++i > 0 )) && printf "%2d\t%-6s -> %s\n" $i "$a" "$v"
+  done 
+}
+
+# Find git aliases
+galias() {
+  local i=-1
+
+  if (( $# > 0 )); then
+    local aliases="$(git aliases | grep $1)"
+  else
+    local aliases="$(git aliases)"
+  fi
+
+  aliases="$(echo \"$aliases\" | sed 's/alias./\n/g')"
+
+  echo -e "$aliases" | while read line; do
+    local a=$(echo "$line" | cut -d " " -f 1)
+    local v=$(echo "$line" | cut -d " " -f 2-)
+    [ ! -z $a ] && (( ++i > 0 )) && printf "%2d\t%-3s -> %s\n" $i "$a" "$v"
+  done 
 }

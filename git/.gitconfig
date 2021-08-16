@@ -21,6 +21,8 @@
 	ph = push
 	pho = push origin main
 	pl = pull
+	r = remote
+	ro = remote add origin
 	rs = reset
 	rh = reset --hard
 	s = status

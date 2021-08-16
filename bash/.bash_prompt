@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Get git branch and status based info
 prompt_git() {
 	local s='';
 	local branchName='';
@@ -81,5 +82,5 @@ PS1+="$violet\$([ -n \"\$CONDA_DEFAULT_ENV\" ] && echo \"(\$CONDA_DEFAULT_ENV) \
 PS1+="$green\$(prompt_git)"
 PS1+="$white\u@\h: "
 PS1+="$blue\W "
-PS1+="$orange\@ "
+PS1+="$orange\$(date +'%d/%m/%y %I:%M %p') "
 PS1+="$reset\n\$ "
