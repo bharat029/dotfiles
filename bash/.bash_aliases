@@ -23,6 +23,7 @@ alias bhp='code ~/.bash_helper'
 alias bex='code ~/.bash_exports'
 
 # ubuntu specific
+alias apti='sudo apt install'
 alias update='sudo apt update && sudo apt upgrade'
 alias ubuntuver='lsb_release -a'
 
@@ -47,11 +48,14 @@ alias tunzip='tar -xzvf'
 # python
 alias py='python3'
 alias pip='pip3'
+alias pipi='pip install'
 
 # conda 
 alias ca='conda activate'
 alias ci='conda install'
 alias cu='conda update'
+alias cl='conda list'
+alias cle='conda env list'
 alias cn='conda create -n'
 alias cr='conda remove --all -n'
 

@@ -20,10 +20,11 @@
 	i = !git init && git add -A && git commit -m init && git branch -m main
 	l = log
 	ph = push
-	pho = push origin main
+	pho = push -u origin main
 	pl = pull
 	r = remote
 	ro = remote add origin
+	rsetup = "!f() { git remote add origin \"$1\" && git push -u origin main; }; f"
 	rs = reset
 	rh = reset --hard
 	s = status
