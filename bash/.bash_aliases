@@ -24,7 +24,7 @@ alias bex='code ~/.bash_exports'
 
 # ubuntu specific
 alias apti='sudo apt install'
-alias update='sudo apt update && sudo apt upgrade'
+alias aptup='sudo apt update && sudo apt upgrade'
 alias ubuntuver='lsb_release -a'
 
 # cron jobs
@@ -70,3 +70,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias path='echo -e ${PATH//:/\\n}'
+alias duf='du -hd 0'
+
+# react
+alias cra='npx create-react-app'
+alias crats='npx create-react-app --template typescript'
