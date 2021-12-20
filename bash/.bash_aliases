@@ -39,7 +39,7 @@ alias bkvim='rsync -av ~/.vimrc ~/backups/vim/'
 alias bkconda='rsync -av ~/.condarc ~/backups/conda/'
 alias bkinp='rsync -av ~/.inputrc ~/backups/input/'
 alias bkgit='rsync -av ~/.gitconfig ~/backups/git/'
-alias bkup='. ~/scripts/backup.sh >> ~/logs/backup.log'
+alias bkup='. ~/utils/backup.sh >> ~/logs/backup.log'
 
 # zip files
 alias tzip='tar -czvf'
