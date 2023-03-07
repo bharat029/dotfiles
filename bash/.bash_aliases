@@ -26,7 +26,7 @@ alias bex='code ~/.bash_exports'
 # ubuntu specific
 alias apti='sudo apt install'
 alias aptup='sudo apt update && sudo apt upgrade'
-alias ubuntuver='lsb_release -a'
+alias linuxver='lsb_release -a'
 
 # cron jobs
 alias cronst='service cron status'
