@@ -30,5 +30,3 @@
 	s = status
 [init]
 	defaultBranch = main
-[safe]
-	directory = /home/bharat/dotfiles
