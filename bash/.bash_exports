@@ -16,3 +16,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Auto reload when file save (React)
 export CHOKIDAR_USEPOLLING=true
+
+export PATH="$HOME/anaconda3/bin:$PATH"
