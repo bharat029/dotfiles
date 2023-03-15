@@ -3,3 +3,6 @@ envs_dirs:
   - /home/bharat/anaconda3/envs
   - /home/bharat/.conda/envs
   - /home/bharat/.azureml/envs
+channels:
+  - defaults
+  - conda-forge
