@@ -1,4 +1,5 @@
 changeps1: false
+auto_activate_base: false
 envs_dirs:
   - /home/bharat/anaconda3/envs
   - /home/bharat/.conda/envs
@@ -6,3 +7,4 @@ envs_dirs:
 channels:
   - defaults
   - conda-forge
+  - anaconda

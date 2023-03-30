@@ -48,6 +48,7 @@ alias tunzip='tar -xzvf'
 
 # python
 alias py='python3'
+alias pyv='python3 --version' 
 alias pip='pip3'
 alias pipi='pip install'
 
@@ -60,7 +61,9 @@ alias cl='conda list'
 alias cle='conda env list'
 alias cn='conda create -n'
 alias cr='conda remove --all -n'
+alias crn='conda rename -n'
 alias cun='conda uninstall'
+alias cv='conda --version'
 
 # c++
 alias g++='g++ -std=c++17'
@@ -86,3 +89,9 @@ alias crats='npx create-react-app --template typescript'
 
 # code locations
 alias cutils='code ~/utils/'
+
+# npm
+alias npmi='npm install'
+alias npmr='npm run'
+alias ns='npm start'
+alias nd='npm run dev'
