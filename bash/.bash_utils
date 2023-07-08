@@ -1,3 +1,5 @@
 alias unzip-ln=~/utils/unzip-ln.py
 alias summarize-companies=~/utils/summarize-companies.py
 alias rebooks=~/utils/rebooks.py
+alias beta=~/utils/beta.py
+alias portfolio=~/utils/portfolio.py

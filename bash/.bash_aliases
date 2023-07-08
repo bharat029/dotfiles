@@ -10,8 +10,6 @@ alias cdc='cd /mnt/c'
 alias cdd='cd /mnt/d'
 alias cde='cd /mnt/e'
 alias cdf='cd /mnt/f'
-alias cd-dw='cd /mnt/c/Users/vbhar/Downloads/'
-alias cd-ln='cd /mnt/f/Anime/light\ novels/'
 
 # git
 alias g='git'
@@ -50,7 +48,7 @@ alias tunzip='tar -xzvf'
 alias py='python3'
 alias pyv='python3 --version' 
 alias pip='pip3'
-alias pipi='pip install'
+alias pi='pip install'
 
 # conda 
 alias ca='conda activate'
@@ -59,11 +57,12 @@ alias ci='conda install'
 alias cu='conda update'
 alias cl='conda list'
 alias cle='conda env list'
-alias cn='conda create -n'
+alias cc='conda create -n'
 alias cr='conda remove --all -n'
 alias crn='conda rename -n'
 alias cun='conda uninstall'
 alias cv='conda --version'
+alias cex='conda env export'
 
 # c++
 alias g++='g++ -std=c++17'
@@ -77,6 +76,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias path='echo -e ${PATH//:/\\n}'
 alias duf='du -hd 0'
+alias wsl=wsl.exe
+alias rmd='rm -rf'
+alias cp='cp -r'
 
 # angular
 alias ngc='f() { ng g c $1 -m $2 --skip-tests $3; }; f'
@@ -91,7 +93,7 @@ alias crats='npx create-react-app --template typescript'
 alias cutils='code ~/utils/'
 
 # npm
-alias npmi='npm install'
-alias npmr='npm run'
+alias ni='npm install'
+alias nr='npm run'
 alias ns='npm start'
 alias nd='npm run dev'
