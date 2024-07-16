@@ -3,3 +3,6 @@ alias summarize-companies=~/utils/summarize-companies.py
 alias rebooks=~/utils/rebooks.py
 alias beta=~/utils/beta.py
 alias portfolio=~/utils/portfolio.py
+alias ext=~/utils/extract_tables.py
+alias copy-code='xclip -selection clipboard < ~/utils/btnClicker.js'
+alias optimize-portfolio=~/utils/optimize-portfolio.py

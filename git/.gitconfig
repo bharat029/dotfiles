@@ -15,7 +15,8 @@
 	cm = !git add -A && git commit
 	cam = !git add -A && git commit --amend
 	cl = clean -f
-	ck = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	ck = checkout
+	ckb = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 	gr = log --graph --oneline --all
 	i = !git init && git add -A && git commit -m init && git branch -m main
 	l = log
@@ -30,3 +31,5 @@
 	s = status
 [init]
 	defaultBranch = main
+[safe]
+	directory = /home/bharat/utils

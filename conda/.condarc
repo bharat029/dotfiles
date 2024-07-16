@@ -1,10 +1,11 @@
 changeps1: false
 auto_activate_base: false
 envs_dirs:
-  - /home/bharat/anaconda3/envs
+  - /home/bharat/miniconda3/envs
   - /home/bharat/.conda/envs
   - /home/bharat/.azureml/envs
 channels:
   - conda-forge
   - defaults
   - anaconda
+  - microsoft
