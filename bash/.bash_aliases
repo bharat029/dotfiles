@@ -10,6 +10,7 @@ alias cdc='cd /mnt/c'
 alias cdd='cd /mnt/d'
 alias cde='cd /mnt/e'
 alias cdf='cd /mnt/f'
+alias gemini='npx https://github.com/google-gemini/gemini-cli'
 
 # git
 alias g='git'
@@ -66,6 +67,7 @@ alias cs='conda search'
 alias cun='conda uninstall'
 alias cv='conda --version'
 alias cex='conda env export'
+alias ccl='conda clean --all -y'
 
 # c++
 alias g++='g++ -std=c++17'
@@ -80,8 +82,9 @@ alias l='ls -CF'
 alias path='echo -e ${PATH//:/\\n}'
 alias duf='du -hd 0'
 alias wsl=wsl.exe
-alias rmd='rm -rf'
+alias rm='rm -rf'
 alias cp='cp -r'
+alias psf='f() { ps aux | grep $1 | grep -v grep; }; f'
 
 # angular
 alias ngc='f() { ng g c $1 -m $2 --skip-tests $3; }; f'
@@ -102,7 +105,18 @@ alias ns='npm start'
 alias nd='npm run dev'
 
 # dendron
+alias cpdex='cd ~/cfa/notes/; cp /mnt/e/cfa/notes/level-iii/notes/* .; npx dendron publish export; cd -'
 alias dex='npx dendron publish export'
 alias di='npx dendron publish init'
 alias dd='npx dendron publish dev'
 alias ds='serve ../.next/out/'
+alias notes='serve ~/cfa/.next/out/'
+
+# redis
+alias redis-start='sudo redis-server /etc/redis/redis.conf --daemonize yes'
+
+# postgres
+alias pg-start='sudo service postgresql start'
+
+# trading-system
+alias trade='py ~/quant-investing/strategies/trend-following/trading-system/trading.py'
