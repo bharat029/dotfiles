@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Make vim the default editor.
 export EDITOR=vim
@@ -9,12 +9,16 @@ export HISTFILESIZE="${HISTSIZE}"
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth'
 
-# Auto reload when file save (React)
-export CHOKIDAR_USEPOLLING=true
+# Prefer UTF-8.
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
 
-# NVM defaults
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Colourised output for BSD ls and friends.
+export CLICOLOR=1
 
-export PATH="$HOME/miniconda3/bin:$PATH"
+# Make less behave and leave output on screen.
+export LESS='-R'
+
+# uv/venv activate scripts add their own "(name)" prefix to PS1.
+# The prompt already shows the environment, so suppress theirs.
+export VIRTUAL_ENV_DISABLE_PROMPT=1

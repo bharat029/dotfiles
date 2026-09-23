@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get git branch and status based info
 prompt_git() {
@@ -47,6 +47,21 @@ prompt_git() {
 	echo -e "<${branchName}${s}> ";
 }
 
+# Show the active Python environment.
+# uv creates .venv in the project dir and sets VIRTUAL_ENV to its full path,
+# so show just the project folder name rather than ".venv".
+prompt_venv() {
+	[ -z "$VIRTUAL_ENV" ] && return;
+
+	local envName="$(basename "$VIRTUAL_ENV")";
+	# If the venv is the conventional ".venv", name it after its parent dir.
+	if [ "$envName" = ".venv" ]; then
+		envName="$(basename "$(dirname "$VIRTUAL_ENV")")";
+	fi;
+
+	echo -e "(${envName}) ";
+}
+
 if tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
 	bold=$(tput bold);
@@ -78,9 +93,9 @@ else
 fi
 
 PS1="\n"
-PS1+="$violet\$([ -n \"\$CONDA_DEFAULT_ENV\" ] && echo \"(\$CONDA_DEFAULT_ENV) \")"
-PS1+="$green\$(prompt_git)"
-PS1+="$white\u@\h: "
-PS1+="$blue\W "
-PS1+="$violet\$(date +'%a %d/%m/%y %I:%M %p') "
-PS1+="$reset\n\$ "
+PS1+="\[$violet\]\$(prompt_venv)"
+PS1+="\[$green\]\$(prompt_git)"
+PS1+="\[$white\]\u@\h: "
+PS1+="\[$blue\]\W "
+PS1+="\[$violet\]\$(date +'%a %d/%m/%y %I:%M %p') "
+PS1+="\[$reset\]\n\$ "

@@ -1,6 +1,9 @@
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
 
+# Treat hyphens and underscores as equivalent when completing
+set completion-map-case on
+
 # List all matches in case multiple possible completions are possible
 # set show-all-if-ambiguous on
 
@@ -24,6 +27,10 @@ set completion-query-items 200
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on
 
+# Colour completions by file type (readline 7+, i.e. bash 4.4 and up)
+set colored-stats on
+set colored-completion-prefix on
+
 # Be more intelligent when autocompleting by also looking at the text after
 # the cursor. For example, when the current line is "cd ~/src/mozil", and
 # the cursor is on the "z", pressing Tab will not autocomplete it to "cd
@@ -36,16 +43,66 @@ set input-meta on
 set output-meta on
 set convert-meta off
 
-# Use Alt/Meta + Delete to delete the preceding word
-"\e[3;3~": kill-word
-
 # Stop Bell sounds
 set bell-style none
 
-# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+# ---------------------------------------------------------------------------
+# Word movement
+#
+# macOS Terminal.app sends different escape sequences than Linux terminals,
+# and the sequence depends on whether "Use Option as Meta key" is enabled
+# (Terminal > Settings > Profiles > Keyboard). Several variants are bound
+# below so this works either way, and in iTerm2 / VS Code's terminal too.
+#
+# To find out what YOUR terminal actually sends for a key: press Ctrl-V,
+# then the key combination. The escape sequence prints as ^[ followed by
+# the rest. ^[ is \e in this file.
+# ---------------------------------------------------------------------------
+
+# Meta/Option + b and f - the readline defaults, work when Option is Meta
+"\eb": backward-word
+"\ef": forward-word
+
+# Ctrl + Left/Right
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
 "\e[5C": forward-word
 "\e[5D": backward-word
+
+# Option/Alt + Left/Right (modifier 3 = Meta, modifier 9 = some terminals)
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
+"\e[1;9C": forward-word
+"\e[1;9D": backward-word
 "\e\e[C": forward-word
 "\e\e[D": backward-word
+
+# ---------------------------------------------------------------------------
+# Word deletion
+# ---------------------------------------------------------------------------
+
+# Option + Delete (backspace) - delete the word before the cursor
+"\e\177": backward-kill-word
+"\e\b": backward-kill-word
+
+# Option + forward-delete - delete the word after the cursor
+"\e[3;3~": kill-word
+"\e[3;5~": kill-word
+
+# Plain forward delete
+"\e[3~": delete-char
+
+# ---------------------------------------------------------------------------
+# Line movement
+#
+# NOTE: Terminal.app intercepts Home/End for scrolling by default. If these
+# bindings do nothing, either use Ctrl-A / Ctrl-E instead, or remap Home/End
+# in Terminal > Settings > Profiles > Keyboard.
+# ---------------------------------------------------------------------------
+
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line

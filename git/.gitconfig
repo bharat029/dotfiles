@@ -4,7 +4,7 @@
 [core]
 	editor = code -w
 [credential]
-	helper = store
+	helper = osxkeychain
 [alias]
 	a = add -A
 	aliases = config --get-regexp alias
@@ -35,4 +35,4 @@
 [init]
 	defaultBranch = main
 [safe]
-	directory = /home/bharat/utils
+	directory = /Users/bharathanmudaliar/utils

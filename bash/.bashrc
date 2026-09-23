@@ -1,6 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# Terminal.app opens LOGIN shells, so ~/.bash_profile sources this file.
 
 # If not running interactively, don't do anything
 case $- in
@@ -8,16 +7,28 @@ case $- in
   *) return;;
 esac
 
+# Homebrew. Must come early so everything below finds brew-installed tools.
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# Prefer GNU coreutils/sed/grep over the BSD versions macOS ships.
+# Requires: brew install coreutils gnu-sed grep findutils
+for gnudir in coreutils gnu-sed grep findutils; do
+  [ -d "$(brew --prefix 2>/dev/null)/opt/$gnudir/libexec/gnubin" ] && \
+    PATH="$(brew --prefix)/opt/$gnudir/libexec/gnubin:$PATH"
+done
+unset gnudir
+export PATH
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-shopt -s globstar
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
@@ -31,52 +42,31 @@ shopt -s cdspell
 for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null
 done
+unset option
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 for fname in ~/.bash_{aliases,prompt,helper,exports,utils}; do
   [ -r "$fname" ] && . "$fname";
 done
 unset fname
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# Bash completion (Homebrew's bash-completion@2 for bash 4+)
+# Requires: brew install bash-completion@2
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+  BREW_PREFIX="$(brew --prefix 2>/dev/null)"
+  if [ -r "${BREW_PREFIX}/etc/profile.d/bash_completion.sh" ]; then
+    . "${BREW_PREFIX}/etc/profile.d/bash_completion.sh"
   fi
+  unset BREW_PREFIX
 fi
-
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type _git &> /dev/null; then
   complete -o default -o nospace -F _git g;
 fi;
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/bharat/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/bharat/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/bharat/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/bharat/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export PATH="/home/bharat/miniforge3/bin:$PATH"
+# uv completions (replaces the old conda init block)
+command -v uv &> /dev/null && eval "$(uv generate-shell-completion bash)"
+command -v uvx &> /dev/null && eval "$(uvx --generate-shell-completion bash)"
